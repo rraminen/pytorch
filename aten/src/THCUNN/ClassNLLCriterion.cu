@@ -86,6 +86,7 @@ __global__ void ClassNLLCriterion_updateGradInput_no_reduce_kernel(
 }
 
 template <typename Dtype, typename Acctype>
+__launch_bounds__(32)
 __global__ void cunn_ClassNLLCriterion_updateOutput_kernel(Dtype *output,
                                                            Dtype *total_weight,
                                                            Dtype *input,
@@ -163,6 +164,7 @@ __global__ void cunn_ClassNLLCriterion_updateGradInput_kernel1(
 }
 
 template <typename Dtype>
+__launch_bounds__(32)
 __global__ void cunn_ClassNLLCriterion_updateGradInput_kernel(
   Dtype *gradInput,
   Dtype *gradOutput,

@@ -62,6 +62,7 @@ __device__ __forceinline__ void warp_reduce(acc_t* sum) {
 // input_t_float, acc_t=float, output_t=half  => read float tensor, float accumulators, write half tensor.
 
 template <typename input_t, typename output_t, typename acc_t, int log2_elements, bool is_log_softmax>
+__launch_bounds__(128)
 __global__ void softmax_warp_forward(output_t *dst, const input_t *src, int batch_size, int stride, int element_count)
 {
     // WARP_SIZE and WARP_BATCH must match the return values batches_per_warp and warp_size of method warp_softmax_forward_kernel.
@@ -153,6 +154,7 @@ __global__ void softmax_warp_forward(output_t *dst, const input_t *src, int batc
 }
 
 template <typename input_t, typename output_t, typename acc_t, int log2_elements, bool is_log_softmax>
+__launch_bounds__(128)
 __global__ void softmax_warp_backward(output_t *gradInput, const input_t *grad, const input_t *output, int batch_size, int stride, int element_count)
 {
     // WARP_SIZE and WARP_BATCH must match the return values batches_per_warp and warp_size of method warp_softmax_backward_kernel.

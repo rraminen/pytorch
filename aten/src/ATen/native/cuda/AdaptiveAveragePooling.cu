@@ -40,6 +40,7 @@ namespace {
    *    4D input, 4D output
    */
    template <typename T>
+   __launch_bounds__(256)
   __global__ void adaptive_average_pool(T *input, T *output,
                           int isizeH, int isizeW,
                           int osizeH, int osizeW,
@@ -155,6 +156,7 @@ namespace {
    *    (uses atomic add)
    */
    template <typename T>
+   __launch_bounds__(256)
   __global__ void atomic_adaptive_average_gradinput(
     T *gradInput, T *gradOutput,
     int isizeH, int isizeW, int osizeH, int osizeW

@@ -34,6 +34,7 @@ static __device__ inline int p_end(int size, int pad, int pooled_size, int strid
 
 // kernels borrowed from Caffe
 template <typename scalar_t, typename accscalar_t>
+__launch_bounds__(256)
 __global__ void max_pool_forward_nchw(const int nthreads, const scalar_t* bottom_data,
     const int num, const int channels, const int height,
     const int width, const int pooled_height, const int pooled_width,
