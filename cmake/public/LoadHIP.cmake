@@ -165,6 +165,7 @@ if(HIP_FOUND)
   find_package_and_print_version(miopen REQUIRED)
   find_package_and_print_version(hipfft REQUIRED)
   find_package_and_print_version(hipsparse REQUIRED)
+  find_package_and_print_version(hipsparselt REQUIRED)
   find_package_and_print_version(rocprim REQUIRED)
   find_package_and_print_version(hipcub REQUIRED)
   find_package_and_print_version(rocthrust REQUIRED)
@@ -185,9 +186,6 @@ if(HIP_FOUND)
     find_package_and_print_version(rccl)
     find_package_and_print_version(hsa-runtime64 REQUIRED)
   endif()
-
-  # Optional components.
-  find_package_and_print_version(hipsparselt)  # Will be required when ready.
 
   list(REMOVE_DUPLICATES ROCM_INCLUDE_DIRS)
 

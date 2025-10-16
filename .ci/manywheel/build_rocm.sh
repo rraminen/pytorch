@@ -14,6 +14,7 @@ export USE_STATIC_NCCL=1
 export ATEN_STATIC_CUDA=1
 export USE_CUDA_STATIC_LINK=1
 export INSTALL_TEST=0 # dont install test binaries into site-packages
+export USE_HIPSPARSELT=${USE_HIPSPARSELT:-1} # Enable if not disabled by libtorch build
 # Set RPATH instead of RUNPATH when using patchelf to avoid LD_LIBRARY_PATH override
 export FORCE_RPATH="--force-rpath"
 

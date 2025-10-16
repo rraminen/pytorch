@@ -946,6 +946,10 @@ if(USE_ROCM)
     target_link_libraries(torch_hip PRIVATE __caffe2_nccl)
     target_compile_definitions(torch_hip PRIVATE USE_NCCL)
   endif()
+  if(USE_HIPSPARSELT)
+      target_link_libraries(torch_hip PRIVATE torch::hipsparselt)
+      target_compile_definitions(torch_hip PRIVATE USE_HIPSPARSELT)
+  endif()
 
   if(USE_PRECOMPILED_HEADERS)
     target_precompile_headers(torch_hip PRIVATE

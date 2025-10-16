@@ -1054,7 +1054,7 @@ if(USE_ROCM)
     foreach(pytorch_rocm_arch ${PYTORCH_ROCM_ARCH})
       list(APPEND HIP_CLANG_FLAGS --offload-arch=${pytorch_rocm_arch})
     endforeach()
-
+ 
     set(Caffe2_HIP_INCLUDE
        $<INSTALL_INTERFACE:include> ${Caffe2_HIP_INCLUDE})
     # This is needed for library added by hip_add_library (same for hip_add_executable)
@@ -1071,6 +1071,9 @@ if(USE_ROCM)
       list(APPEND Caffe2_PUBLIC_HIP_DEPENDENCY_LIBS
         roc::hipsparselt
       )
+
+    set(CAFFE2_USE_CUSPARSELT ${USE_CUSPARSELT})
+
     endif()
 
     # ---[ Kernel asserts
